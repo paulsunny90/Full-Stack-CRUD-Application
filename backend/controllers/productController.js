@@ -1,6 +1,6 @@
 import  Product from "../models/productModel.js"
 
-exports.createProduct = async (req, res) => {
+export const createProduct = async (req, res) => {
   try {
     const product = await Product.create(req.body);
     res.status(201).json(product);
@@ -11,7 +11,7 @@ exports.createProduct = async (req, res) => {
 
 
 
-exports.getProducts = async (req, res) => {
+export const getProducts = async (req, res) => {
   try {
 
     const { category, sort } = req.query;
@@ -36,8 +36,7 @@ exports.getProducts = async (req, res) => {
 };
 
 
-// GET SINGLE PRODUCT
-exports.getProductById = async (req, res) => {
+export const getProductById = async (req, res) => {
   try {
 
     const product = await Product.findById(req.params.id);
@@ -51,7 +50,7 @@ exports.getProductById = async (req, res) => {
 
 
 
-exports.updateProduct = async (req, res) => {
+export const updateProduct = async (req, res) => {
   try {
 
     const product = await Product.findByIdAndUpdate(
@@ -69,7 +68,7 @@ exports.updateProduct = async (req, res) => {
 
 
 
-exports.deleteProduct = async (req, res) => {
+export const deleteProduct = async (req, res) => {
   try {
 
     await Product.findByIdAndDelete(req.params.id);
@@ -82,7 +81,7 @@ exports.deleteProduct = async (req, res) => {
 };
 
 
-exports.orderProduct = async (req, res) => {
+export const orderProduct = async (req, res) => {
   try {
 
     const product = await Product.findById(req.params.id);
